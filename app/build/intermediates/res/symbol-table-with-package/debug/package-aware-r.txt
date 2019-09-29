@@ -642,6 +642,13 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable state1
+drawable state2
+drawable state3
+drawable state4
+drawable state5
+drawable state6
+drawable state7
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -685,6 +692,7 @@ id btnD
 id btnE
 id btnF
 id btnG
+id btnGame
 id btnH
 id btnI
 id btnJ
@@ -740,6 +748,7 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageView1
 id info
 id invisible
 id italic
@@ -748,6 +757,11 @@ id line1
 id line3
 id listMode
 id list_item
+id ltr1
+id ltr2
+id ltr3
+id ltr4
+id ltr5
 id message
 id middle
 id multiply
