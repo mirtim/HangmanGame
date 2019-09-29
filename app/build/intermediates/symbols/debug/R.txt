@@ -747,7 +747,7 @@ int id icon 0x7f07005d
 int id icon_group 0x7f07005e
 int id ifRoom 0x7f07005f
 int id image 0x7f070060
-int id imageView1 0x7f070061
+int id imgHang 0x7f070061
 int id info 0x7f070062
 int id invisible 0x7f070063
 int id italic 0x7f070064

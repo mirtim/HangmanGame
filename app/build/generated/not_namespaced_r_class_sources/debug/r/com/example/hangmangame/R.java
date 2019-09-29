@@ -3502,7 +3502,7 @@ public final class R {
     public static final int icon_group=0x7f07005e;
     public static final int ifRoom=0x7f07005f;
     public static final int image=0x7f070060;
-    public static final int imageView1=0x7f070061;
+    public static final int imgHang=0x7f070061;
     public static final int info=0x7f070062;
     public static final int invisible=0x7f070063;
     public static final int italic=0x7f070064;

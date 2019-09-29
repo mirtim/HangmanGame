@@ -748,7 +748,7 @@ id icon
 id icon_group
 id ifRoom
 id image
-id imageView1
+id imgHang
 id info
 id invisible
 id italic
