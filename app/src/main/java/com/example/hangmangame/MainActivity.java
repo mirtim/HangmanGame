@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnA;
@@ -50,53 +52,57 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnA = (Button) findViewById(R.id.btnA);
-        btnB = (Button) findViewById(R.id.btnB);
-        btnC = (Button) findViewById(R.id.btnC);
-        btnD = (Button) findViewById(R.id.btnD);
-        btnE = (Button) findViewById(R.id.btnE);
-        btnF = (Button) findViewById(R.id.btnF);
-        btnG = (Button) findViewById(R.id.btnG);
-        btnH = (Button) findViewById(R.id.btnH);
-        btnI = (Button) findViewById(R.id.btnI);
-        btnJ = (Button) findViewById(R.id.btnJ);
-        btnK = (Button) findViewById(R.id.btnK);
-        btnL = (Button) findViewById(R.id.btnL);
-        btnM = (Button) findViewById(R.id.btnM);
-        btnN = (Button) findViewById(R.id.btnN);
-        btnO = (Button) findViewById(R.id.btnO);
-        btnP = (Button) findViewById(R.id.btnP);
-        btnQ = (Button) findViewById(R.id.btnQ);
-        btnR = (Button) findViewById(R.id.btnR);
-        btnS = (Button) findViewById(R.id.btnS);
-        btnT = (Button) findViewById(R.id.btnT);
-        btnU = (Button) findViewById(R.id.btnU);
-        btnV = (Button) findViewById(R.id.btnV);
-        btnW = (Button) findViewById(R.id.btnW);
-        btnX = (Button) findViewById(R.id.btnX);
-        btnY = (Button) findViewById(R.id.btnY);
-        btnZ = (Button) findViewById(R.id.btnZ);
-        ltr1 = (TextView) findViewById(R.id.ltr1);
-        ltr2 = (TextView) findViewById(R.id.ltr2);
-        ltr3 = (TextView) findViewById(R.id.ltr3);
-        ltr4 = (TextView) findViewById(R.id.ltr4);
-        ltr5 = (TextView) findViewById(R.id.ltr5);
-        btnGame = (Button) findViewById(R.id.btnGame);
+        btnA = findViewById(R.id.btnA);
+        btnB = findViewById(R.id.btnB);
+        btnC = findViewById(R.id.btnC);
+        btnD = findViewById(R.id.btnD);
+        btnE = findViewById(R.id.btnE);
+        btnF = findViewById(R.id.btnF);
+        btnG = findViewById(R.id.btnG);
+        btnH = findViewById(R.id.btnH);
+        btnI = findViewById(R.id.btnI);
+        btnJ = findViewById(R.id.btnJ);
+        btnK = findViewById(R.id.btnK);
+        btnL = findViewById(R.id.btnL);
+        btnM = findViewById(R.id.btnM);
+        btnN = findViewById(R.id.btnN);
+        btnO = findViewById(R.id.btnO);
+        btnP = findViewById(R.id.btnP);
+        btnQ = findViewById(R.id.btnQ);
+        btnR = findViewById(R.id.btnR);
+        btnS = findViewById(R.id.btnS);
+        btnT = findViewById(R.id.btnT);
+        btnU = findViewById(R.id.btnU);
+        btnV = findViewById(R.id.btnV);
+        btnW = findViewById(R.id.btnW);
+        btnX = findViewById(R.id.btnX);
+        btnY = findViewById(R.id.btnY);
+        btnZ = findViewById(R.id.btnZ);
+        ltr1 = findViewById(R.id.ltr1);
+        ltr2 = findViewById(R.id.ltr2);
+        ltr3 = findViewById(R.id.ltr3);
+        ltr4 = findViewById(R.id.ltr4);
+        ltr5 = findViewById(R.id.ltr5);
+        btnGame = findViewById(R.id.btnGame);
 
-        String[] words = {"apple", "phone", "chair"};              // create a list of words with 5 letters
+        final String[] words = {"apple", "phone", "chair"};              // create a list of words with 5 letters
 
         btnGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // pick a random word from words
                 // set each letter for each of 5 text views
                 // update the picture(I will make the pictures!)
                 // update the hind button
                 // enable all buttons
 
+                Random r = new Random();
+                int randNum = r.nextInt(words.length);
+                String word = words[randNum];
+
             }
         });
+
 
         btnA.setOnClickListener(new View.OnClickListener() {
             @Override
