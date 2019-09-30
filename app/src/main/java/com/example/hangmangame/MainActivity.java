@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +59,19 @@ public class MainActivity extends AppCompatActivity {
     final String[] words = {"apple", "phone", "chair", "house", "rival", "smile", "stove"};              // create a list of words with 5 letters
     private int correct = 0;
     private String word;
+    private int numOfHints = 0;
+
+    // A hashmap that contains hint messages for the user
+
+    private Map<String, String> hintMessages = new HashMap<String, String>();
+
+    // This is a hashmap that contains the letter buttons in the game. Every time a user clicks
+    // a correct button, the button will be removed from the hashmap. This is to make it simple to keep
+    // track of the remaining letters that may or may not be part of the solution for when a user
+    // has clicked on the hint button a second time
+
+    private Map<Character, Button> remainingButtons = new HashMap<Character, Button>();
+    private int remainingBtnIterator = 0;
 
 
     @Override
@@ -115,6 +131,48 @@ public class MainActivity extends AppCompatActivity {
         btnGame = findViewById(R.id.btnGame);
         btnHint = findViewById(R.id.btnHint);
         imgHang = findViewById(R.id.imgHang);
+
+        // Add the hint message to each corresponding word
+
+
+        hintMessages.put("apple", "These might help keep doctors away!");
+        hintMessages.put("phone", "hello?");
+        hintMessages.put("chair", "have a seat!");
+        hintMessages.put("house", "Where do you live?");
+        hintMessages.put("rival", "An opponent");
+        hintMessages.put("smile", "Say cheese!");
+        hintMessages.put("stove", "Be careful, it's hot!");
+
+
+        // Add every button to the hashmap of buttons to begin. As a user enters a correct button,
+        // it will be removed from the hashmap
+
+       remainingButtons.put('a', btnA);
+       remainingButtons.put('b', btnB);
+       remainingButtons.put('c', btnC);
+       remainingButtons.put('d', btnD);
+       remainingButtons.put('e', btnE);
+       remainingButtons.put('f', btnF);
+       remainingButtons.put('g', btnG);
+       remainingButtons.put('h', btnH);
+       remainingButtons.put('i', btnI);
+       remainingButtons.put('j', btnJ);
+       remainingButtons.put('k', btnK);
+       remainingButtons.put('l', btnL);
+       remainingButtons.put('m', btnM);
+       remainingButtons.put('n', btnN);
+       remainingButtons.put('o', btnO);
+       remainingButtons.put('p', btnP);
+       remainingButtons.put('q', btnQ);
+       remainingButtons.put('r', btnR);
+       remainingButtons.put('s', btnS);
+       remainingButtons.put('t', btnT);
+       remainingButtons.put('u', btnU);
+       remainingButtons.put('v', btnV);
+       remainingButtons.put('w', btnW);
+       remainingButtons.put('x', btnX);
+       remainingButtons.put('y', btnY);
+       remainingButtons.put('z', btnZ);
 
 
         btnGame.setOnClickListener(new View.OnClickListener() {
@@ -239,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {                                                         // case if there is such letter in the word
 
                         btnA.setEnabled(false);
+                        remainingButtons.remove('a');
                         for (int i = 0; i < word.length(); i++) {
 
                             if (word.charAt(i) == 'a') {
@@ -332,6 +391,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnB.setEnabled(false);
+                    remainingButtons.remove('b');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'b') {
@@ -425,6 +485,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnC.setEnabled(false);
+                    remainingButtons.remove('c');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'c') {
@@ -518,6 +579,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnD.setEnabled(false);
+                    remainingButtons.remove('d');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'd') {
@@ -611,6 +673,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnE.setEnabled(false);
+                    remainingButtons.remove('e');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'e') {
@@ -704,6 +767,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnF.setEnabled(false);
+                    remainingButtons.remove('f');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'f') {
@@ -797,6 +861,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnG.setEnabled(false);
+                    remainingButtons.remove('g');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'g') {
@@ -890,6 +955,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnH.setEnabled(false);
+                    remainingButtons.remove('h');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'h') {
@@ -983,6 +1049,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnI.setEnabled(false);
+                    remainingButtons.remove('i');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'i') {
@@ -1076,6 +1143,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnJ.setEnabled(false);
+                    remainingButtons.remove('j');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'j') {
@@ -1169,6 +1237,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnK.setEnabled(false);
+                    remainingButtons.remove('k');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'k') {
@@ -1262,6 +1331,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnL.setEnabled(false);
+                    remainingButtons.remove('l');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'l') {
@@ -1355,6 +1425,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnM.setEnabled(false);
+                    remainingButtons.remove('m');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'm') {
@@ -1448,6 +1519,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnN.setEnabled(false);
+                    remainingButtons.remove('n');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'n') {
@@ -1541,6 +1613,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnO.setEnabled(false);
+                    remainingButtons.remove('o');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'o') {
@@ -1634,6 +1707,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnP.setEnabled(false);
+                    remainingButtons.remove('p');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'p') {
@@ -1727,6 +1801,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnQ.setEnabled(false);
+                    remainingButtons.remove('q');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'q') {
@@ -1820,6 +1895,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnR.setEnabled(false);
+                    remainingButtons.remove('r');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'r') {
@@ -1913,6 +1989,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnS.setEnabled(false);
+                    remainingButtons.remove('s');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 's') {
@@ -2006,6 +2083,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnT.setEnabled(false);
+                    remainingButtons.remove('t');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 't') {
@@ -2099,6 +2177,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnU.setEnabled(false);
+                    remainingButtons.remove('u');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'u') {
@@ -2192,6 +2271,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnV.setEnabled(false);
+                    remainingButtons.remove('v');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'v') {
@@ -2285,6 +2365,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnW.setEnabled(false);
+                    remainingButtons.remove('w');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'w') {
@@ -2378,6 +2459,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnX.setEnabled(false);
+                    remainingButtons.remove('x');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'x') {
@@ -2471,6 +2553,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnY.setEnabled(false);
+                    remainingButtons.remove('y');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'y') {
@@ -2564,6 +2647,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                                         // case if there is such letter in the word
 
                     btnZ.setEnabled(false);
+                    remainingButtons.remove('z');
                     for (int i = 0; i < word.length(); i++) {
 
                         if (word.charAt(i) == 'z') {
@@ -2595,5 +2679,147 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btnHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                numOfHints++;
+
+                // The first time a user asks for hint, they will lose a turn, meaning the next state will be displayed
+                // Depending on the current state that the user is in, the next state will be generated
+
+                if (numOfHints == 1) {
+                    
+                    for (Map.Entry<String, String> entry : hintMessages.entrySet()) {
+                        if (entry.getKey().equals(word)){
+                            String toastMsg = entry.getValue();
+                            Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    if ((int) (imgHang.getTag()) == 1) {
+                        imgHang.setImageResource(R.drawable.state2);
+                        imgHang.setTag(2);
+                    } else if ((int) (imgHang.getTag()) == 2) {
+                        imgHang.setImageResource(R.drawable.state3);
+                        imgHang.setTag(3);
+                    } else if ((int) (imgHang.getTag()) == 3) {
+                        imgHang.setImageResource(R.drawable.state4);
+                        imgHang.setTag(4);
+                    } else if ((int) (imgHang.getTag()) == 4) {
+                        imgHang.setImageResource(R.drawable.state5);
+                        imgHang.setTag(5);
+                    } else if ((int) (imgHang.getTag()) == 5) {
+                        imgHang.setImageResource(R.drawable.state6);
+                        imgHang.setTag(6);
+                    } else if ((int) (imgHang.getTag()) == 6) {
+                        imgHang.setImageResource(R.drawable.state7);
+                        imgHang.setTag(7);
+                        btnA.setEnabled(false);
+                        btnB.setEnabled(false);
+                        btnC.setEnabled(false);
+                        btnD.setEnabled(false);
+                        btnE.setEnabled(false);
+                        btnF.setEnabled(false);
+                        btnG.setEnabled(false);
+                        btnH.setEnabled(false);
+                        btnI.setEnabled(false);
+                        btnJ.setEnabled(false);
+                        btnK.setEnabled(false);
+                        btnL.setEnabled(false);
+                        btnM.setEnabled(false);
+                        btnN.setEnabled(false);
+                        btnO.setEnabled(false);
+                        btnP.setEnabled(false);
+                        btnQ.setEnabled(false);
+                        btnR.setEnabled(false);
+                        btnS.setEnabled(false);
+                        btnT.setEnabled(false);
+                        btnU.setEnabled(false);
+                        btnV.setEnabled(false);
+                        btnW.setEnabled(false);
+                        btnX.setEnabled(false);
+                        btnY.setEnabled(false);
+                        btnZ.setEnabled(false);
+                        btnHint.setEnabled(false);
+                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
+                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                        losing.show();
+                    }
+
+                }
+
+                // The second time a user asks for a hint, they will lose a turn and half of the letters
+                // that are not part of the word will be disabled
+
+                if (numOfHints == 2) {
+                    if ((int) (imgHang.getTag()) == 1) {
+                        imgHang.setImageResource(R.drawable.state2);
+                        imgHang.setTag(2);
+                    } else if ((int) (imgHang.getTag()) == 2) {
+                        imgHang.setImageResource(R.drawable.state3);
+                        imgHang.setTag(3);
+                    } else if ((int) (imgHang.getTag()) == 3) {
+                        imgHang.setImageResource(R.drawable.state4);
+                        imgHang.setTag(4);
+                    } else if ((int) (imgHang.getTag()) == 4) {
+                        imgHang.setImageResource(R.drawable.state5);
+                        imgHang.setTag(5);
+                    } else if ((int) (imgHang.getTag()) == 5) {
+                        imgHang.setImageResource(R.drawable.state6);
+                        imgHang.setTag(6);
+                    } else if ((int) (imgHang.getTag()) == 6) {
+                        imgHang.setImageResource(R.drawable.state7);
+                        imgHang.setTag(7);
+                        btnA.setEnabled(false);
+                        btnB.setEnabled(false);
+                        btnC.setEnabled(false);
+                        btnD.setEnabled(false);
+                        btnE.setEnabled(false);
+                        btnF.setEnabled(false);
+                        btnG.setEnabled(false);
+                        btnH.setEnabled(false);
+                        btnI.setEnabled(false);
+                        btnJ.setEnabled(false);
+                        btnK.setEnabled(false);
+                        btnL.setEnabled(false);
+                        btnM.setEnabled(false);
+                        btnN.setEnabled(false);
+                        btnO.setEnabled(false);
+                        btnP.setEnabled(false);
+                        btnQ.setEnabled(false);
+                        btnR.setEnabled(false);
+                        btnS.setEnabled(false);
+                        btnT.setEnabled(false);
+                        btnU.setEnabled(false);
+                        btnV.setEnabled(false);
+                        btnW.setEnabled(false);
+                        btnX.setEnabled(false);
+                        btnY.setEnabled(false);
+                        btnZ.setEnabled(false);
+                        btnHint.setEnabled(false);
+                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
+                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                        losing.show();
+                    }
+
+                    btnHint.setEnabled(false);
+                    int num_of_remaining_buttons = remainingButtons.size();
+                    int num_of_buttons_to_disable = num_of_remaining_buttons/2;
+
+
+                    for (Map.Entry<Character, Button> entry : remainingButtons.entrySet()){
+                      if (word.indexOf(entry.getKey()) == -1 && remainingBtnIterator < num_of_buttons_to_disable){
+                          remainingBtnIterator++;
+                          entry.getValue().setEnabled(false);
+                      }
+
+                    }
+
+                }
+            }
+        });
     }
+
 }
