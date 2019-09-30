@@ -694,6 +694,7 @@ id btnF
 id btnG
 id btnGame
 id btnH
+id btnHint
 id btnI
 id btnJ
 id btnK
