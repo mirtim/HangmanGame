@@ -1,4 +1,8 @@
 /*
+* Simon Acevedo Rodriguez, Abdulshaheed Alqunber, Timothy Mizoian, Ruidong Duan
+* September 30, 2019
+* STAR Group
+*
 * This is a game of hangman
 * Every time you press a button, it either adds a letter to the word if you guessed it correctly
 * or it draws a new part of the Stickman body. If the whole body is drawn, you lose
