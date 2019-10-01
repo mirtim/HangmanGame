@@ -235,6 +235,147 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                numOfHints++;
+
+                // The first time a user asks for hint, they will lose a turn, meaning the next state will be displayed
+                // Depending on the current state that the user is in, the next state will be generated
+
+                if (numOfHints == 1) {
+
+                    for (Map.Entry<String, String> entry : hintMessages.entrySet()) {
+                        if (entry.getKey().equals(word)){
+                            String toastMsg = entry.getValue();
+                            Toast hintMsg = Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_LONG);
+                            hintMsg.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                            hintMsg.show();
+                        }
+                    }
+
+                    if ((int) (imgHang.getTag()) == 1) {
+                        imgHang.setImageResource(R.drawable.state2);
+                        imgHang.setTag(2);
+                    } else if ((int) (imgHang.getTag()) == 2) {
+                        imgHang.setImageResource(R.drawable.state3);
+                        imgHang.setTag(3);
+                    } else if ((int) (imgHang.getTag()) == 3) {
+                        imgHang.setImageResource(R.drawable.state4);
+                        imgHang.setTag(4);
+                    } else if ((int) (imgHang.getTag()) == 4) {
+                        imgHang.setImageResource(R.drawable.state5);
+                        imgHang.setTag(5);
+                    } else if ((int) (imgHang.getTag()) == 5) {
+                        imgHang.setImageResource(R.drawable.state6);
+                        imgHang.setTag(6);
+                    } else if ((int) (imgHang.getTag()) == 6) {
+                        imgHang.setImageResource(R.drawable.state7);
+                        imgHang.setTag(7);
+                        btnA.setEnabled(false);
+                        btnB.setEnabled(false);
+                        btnC.setEnabled(false);
+                        btnD.setEnabled(false);
+                        btnE.setEnabled(false);
+                        btnF.setEnabled(false);
+                        btnG.setEnabled(false);
+                        btnH.setEnabled(false);
+                        btnI.setEnabled(false);
+                        btnJ.setEnabled(false);
+                        btnK.setEnabled(false);
+                        btnL.setEnabled(false);
+                        btnM.setEnabled(false);
+                        btnN.setEnabled(false);
+                        btnO.setEnabled(false);
+                        btnP.setEnabled(false);
+                        btnQ.setEnabled(false);
+                        btnR.setEnabled(false);
+                        btnS.setEnabled(false);
+                        btnT.setEnabled(false);
+                        btnU.setEnabled(false);
+                        btnV.setEnabled(false);
+                        btnW.setEnabled(false);
+                        btnX.setEnabled(false);
+                        btnY.setEnabled(false);
+                        btnZ.setEnabled(false);
+                        btnHint.setEnabled(false);
+                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
+                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                        losing.show();
+                    }
+
+                }
+
+                // The second time a user asks for a hint, they will lose a turn and half of the letters
+                // that are not part of the word will be disabled
+
+                if (numOfHints == 2) {
+                    if ((int) (imgHang.getTag()) == 1) {
+                        imgHang.setImageResource(R.drawable.state2);
+                        imgHang.setTag(2);
+                    } else if ((int) (imgHang.getTag()) == 2) {
+                        imgHang.setImageResource(R.drawable.state3);
+                        imgHang.setTag(3);
+                    } else if ((int) (imgHang.getTag()) == 3) {
+                        imgHang.setImageResource(R.drawable.state4);
+                        imgHang.setTag(4);
+                    } else if ((int) (imgHang.getTag()) == 4) {
+                        imgHang.setImageResource(R.drawable.state5);
+                        imgHang.setTag(5);
+                    } else if ((int) (imgHang.getTag()) == 5) {
+                        imgHang.setImageResource(R.drawable.state6);
+                        imgHang.setTag(6);
+                    } else if ((int) (imgHang.getTag()) == 6) {
+                        imgHang.setImageResource(R.drawable.state7);
+                        imgHang.setTag(7);
+                        btnA.setEnabled(false);
+                        btnB.setEnabled(false);
+                        btnC.setEnabled(false);
+                        btnD.setEnabled(false);
+                        btnE.setEnabled(false);
+                        btnF.setEnabled(false);
+                        btnG.setEnabled(false);
+                        btnH.setEnabled(false);
+                        btnI.setEnabled(false);
+                        btnJ.setEnabled(false);
+                        btnK.setEnabled(false);
+                        btnL.setEnabled(false);
+                        btnM.setEnabled(false);
+                        btnN.setEnabled(false);
+                        btnO.setEnabled(false);
+                        btnP.setEnabled(false);
+                        btnQ.setEnabled(false);
+                        btnR.setEnabled(false);
+                        btnS.setEnabled(false);
+                        btnT.setEnabled(false);
+                        btnU.setEnabled(false);
+                        btnV.setEnabled(false);
+                        btnW.setEnabled(false);
+                        btnX.setEnabled(false);
+                        btnY.setEnabled(false);
+                        btnZ.setEnabled(false);
+                        btnHint.setEnabled(false);
+                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
+                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                        losing.show();
+                    }
+
+                    btnHint.setEnabled(false);
+                    int num_of_remaining_buttons = remainingButtons.size();
+                    int num_of_buttons_to_disable = num_of_remaining_buttons/2;
+
+                    for (Map.Entry<Character, Button> entry : remainingButtons.entrySet()){
+                        if (word.indexOf(entry.getKey()) == -1 && remainingBtnIterator < num_of_buttons_to_disable){
+                            remainingBtnIterator++;
+                            entry.getValue().setEnabled(false);
+                        }
+
+                    }
+
+                }
+            }
+        });
 
         btnA.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -2680,145 +2821,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnHint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                numOfHints++;
-
-                // The first time a user asks for hint, they will lose a turn, meaning the next state will be displayed
-                // Depending on the current state that the user is in, the next state will be generated
-
-                if (numOfHints == 1) {
-                    
-                    for (Map.Entry<String, String> entry : hintMessages.entrySet()) {
-                        if (entry.getKey().equals(word)){
-                            String toastMsg = entry.getValue();
-                            Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    if ((int) (imgHang.getTag()) == 1) {
-                        imgHang.setImageResource(R.drawable.state2);
-                        imgHang.setTag(2);
-                    } else if ((int) (imgHang.getTag()) == 2) {
-                        imgHang.setImageResource(R.drawable.state3);
-                        imgHang.setTag(3);
-                    } else if ((int) (imgHang.getTag()) == 3) {
-                        imgHang.setImageResource(R.drawable.state4);
-                        imgHang.setTag(4);
-                    } else if ((int) (imgHang.getTag()) == 4) {
-                        imgHang.setImageResource(R.drawable.state5);
-                        imgHang.setTag(5);
-                    } else if ((int) (imgHang.getTag()) == 5) {
-                        imgHang.setImageResource(R.drawable.state6);
-                        imgHang.setTag(6);
-                    } else if ((int) (imgHang.getTag()) == 6) {
-                        imgHang.setImageResource(R.drawable.state7);
-                        imgHang.setTag(7);
-                        btnA.setEnabled(false);
-                        btnB.setEnabled(false);
-                        btnC.setEnabled(false);
-                        btnD.setEnabled(false);
-                        btnE.setEnabled(false);
-                        btnF.setEnabled(false);
-                        btnG.setEnabled(false);
-                        btnH.setEnabled(false);
-                        btnI.setEnabled(false);
-                        btnJ.setEnabled(false);
-                        btnK.setEnabled(false);
-                        btnL.setEnabled(false);
-                        btnM.setEnabled(false);
-                        btnN.setEnabled(false);
-                        btnO.setEnabled(false);
-                        btnP.setEnabled(false);
-                        btnQ.setEnabled(false);
-                        btnR.setEnabled(false);
-                        btnS.setEnabled(false);
-                        btnT.setEnabled(false);
-                        btnU.setEnabled(false);
-                        btnV.setEnabled(false);
-                        btnW.setEnabled(false);
-                        btnX.setEnabled(false);
-                        btnY.setEnabled(false);
-                        btnZ.setEnabled(false);
-                        btnHint.setEnabled(false);
-                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
-                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                        losing.show();
-                    }
-
-                }
-
-                // The second time a user asks for a hint, they will lose a turn and half of the letters
-                // that are not part of the word will be disabled
-
-                if (numOfHints == 2) {
-                    if ((int) (imgHang.getTag()) == 1) {
-                        imgHang.setImageResource(R.drawable.state2);
-                        imgHang.setTag(2);
-                    } else if ((int) (imgHang.getTag()) == 2) {
-                        imgHang.setImageResource(R.drawable.state3);
-                        imgHang.setTag(3);
-                    } else if ((int) (imgHang.getTag()) == 3) {
-                        imgHang.setImageResource(R.drawable.state4);
-                        imgHang.setTag(4);
-                    } else if ((int) (imgHang.getTag()) == 4) {
-                        imgHang.setImageResource(R.drawable.state5);
-                        imgHang.setTag(5);
-                    } else if ((int) (imgHang.getTag()) == 5) {
-                        imgHang.setImageResource(R.drawable.state6);
-                        imgHang.setTag(6);
-                    } else if ((int) (imgHang.getTag()) == 6) {
-                        imgHang.setImageResource(R.drawable.state7);
-                        imgHang.setTag(7);
-                        btnA.setEnabled(false);
-                        btnB.setEnabled(false);
-                        btnC.setEnabled(false);
-                        btnD.setEnabled(false);
-                        btnE.setEnabled(false);
-                        btnF.setEnabled(false);
-                        btnG.setEnabled(false);
-                        btnH.setEnabled(false);
-                        btnI.setEnabled(false);
-                        btnJ.setEnabled(false);
-                        btnK.setEnabled(false);
-                        btnL.setEnabled(false);
-                        btnM.setEnabled(false);
-                        btnN.setEnabled(false);
-                        btnO.setEnabled(false);
-                        btnP.setEnabled(false);
-                        btnQ.setEnabled(false);
-                        btnR.setEnabled(false);
-                        btnS.setEnabled(false);
-                        btnT.setEnabled(false);
-                        btnU.setEnabled(false);
-                        btnV.setEnabled(false);
-                        btnW.setEnabled(false);
-                        btnX.setEnabled(false);
-                        btnY.setEnabled(false);
-                        btnZ.setEnabled(false);
-                        btnHint.setEnabled(false);
-                        Toast losing = Toast.makeText(getApplicationContext(), "Sorry, You lost! Press NEW GAME to try again.", Toast.LENGTH_LONG);
-                        losing.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                        losing.show();
-                    }
-
-                    btnHint.setEnabled(false);
-                    int num_of_remaining_buttons = remainingButtons.size();
-                    int num_of_buttons_to_disable = num_of_remaining_buttons/2;
-
-                    for (Map.Entry<Character, Button> entry : remainingButtons.entrySet()){
-                      if (word.indexOf(entry.getKey()) == -1 && remainingBtnIterator < num_of_buttons_to_disable){
-                          remainingBtnIterator++;
-                          entry.getValue().setEnabled(false);
-                      }
-
-                    }
-
-                }
-            }
-        });
     }
 
 }
