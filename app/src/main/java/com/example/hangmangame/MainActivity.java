@@ -1,3 +1,13 @@
+/*
+* This is a game of hangman
+* Every time you press a button, it either adds a letter to the word if you guessed it correctly
+* or it draws a new part of the Stickman body. If the whole body is drawn, you lose
+* but if you guess the word completely, you win.
+* There is also hint button, which can be pressed twice. The first time is gives some written clue
+* to the word and the second time it removes the letters, which are not part of the word.
+*/
+
+
 package com.example.hangmangame;
 
 import androidx.annotation.NonNull;
