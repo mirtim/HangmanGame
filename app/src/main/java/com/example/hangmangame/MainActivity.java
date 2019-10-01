@@ -3,6 +3,7 @@ package com.example.hangmangame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -199,9 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 imgHang.setImageResource(R.drawable.state1);
                 imgHang.setTag(1);
 
-                // update the hint button
-                // TODO!
-
                 // enable all buttons
                 btnA.setEnabled(true);
                 btnB.setEnabled(true);
@@ -230,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
                 btnY.setEnabled(true);
                 btnZ.setEnabled(true);
                 btnHint.setEnabled(true);
+                numOfHints = 0;
+                remainingBtnIterator = 0;
                 imgHang.setVisibility(View.VISIBLE);
 
             }
@@ -2807,7 +2807,6 @@ public class MainActivity extends AppCompatActivity {
                     btnHint.setEnabled(false);
                     int num_of_remaining_buttons = remainingButtons.size();
                     int num_of_buttons_to_disable = num_of_remaining_buttons/2;
-
 
                     for (Map.Entry<Character, Button> entry : remainingButtons.entrySet()){
                       if (word.indexOf(entry.getKey()) == -1 && remainingBtnIterator < num_of_buttons_to_disable){
