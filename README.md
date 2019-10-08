@@ -16,7 +16,8 @@ The game starts when the "New Game" button is clicked. After choosing a letter, 
 * Version: Andriod Lollipop 5.1.1
 
 ## Features
-Apart from the basic functionality, the game includes a "Hint" button. The first time it is clicked it displays a hint message BUT it costs the user a turn. The second time it is clicked it disables half of the remaining letters (that are not part of the word) BUT it costs the user a turn. After the second click the "Hint" button is disabled. 
+Apart from the basic functionality, the game includes a "Hint" button. The first time it is clicked it displays a hint message BUT it costs the user a turn. The second time it is clicked it disables half of the remaining letters (that are not part of the word) BUT it costs the user a turn. After the second click the "Hint" button is disabled.
+The state of the game is preserved on device rotation.
 
 ## Status
 Project is: _finished_
